@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html ng-app="SmartMirror">
+  <head>
+    <meta charset="utf-8">
+    <title>Smart Mirror</title>
+
+    <script>const annyang = require('annyang')</script>
+
+    <!-- bower:js -->
+    <script src="bower_components/moment/min/moment-with-locales.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="bower_components/rrule/lib/rrule.js"></script>
+    <!-- endbower -->
+
+    <script src="js/inc/skycons.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+
+    <!-- App -->
+    <script src="config.js"></script>
+    <script src="js/app.js"></script>
+
+    <script src="js/services/timebox.js"></script>
+    <script src="js/services/soundcloud.js"></script>
+    <script src="js/services/search.js"></script>
+    <script src="js/services/speech.js"></script>
+    <script src="js/services/weather.js"></script>
+    <script src="js/services/map.js"></script>
+    <script src="js/services/giphy.js"></script>
+    <script src="js/services/geolocation.js"></script>
+    <script src="js/services/autosleep.js"></script>
+    <script src="js/controller.js"></script>
+
+    <!-- Styles and Resources -->
+    <link rel="shortcut icon" href="favicon.ico" />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,800,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/weather-icons.css">
+    <!-- bower:css -->
+    <!-- endbower -->
+
+  </head>
+  <body ng-controller="MirrorCtrl" ng-cloak="">
+    <div class="top">
+      <div class="top-left">
+          <div class="weather-today">
+              <span class="temperature">
+                  <i class="wi {{currentForcast.icon}}"></i>{{currentForcast.temperature}}<i class="wi wi-degrees"></i>c
+              </span>
+          </div>
+        <!--<div class="date grey"><span ng-bind="date.format('dddd')"></span>, <span ng-bind="date.format('LL')"></span></div>-->
+        <!--<div class="time" ng-bind="date.format('LT')"></div>-->
+      </div>
+      <div class="top-right">
+          <div class="date grey">{{date | date : 'EEE, MMM d yyyy'}}</div>
+          <div class="time">{{ date | date : 'hh:mm a' }}</div>
+          <div class="schedules" ng-show="schedule_list != [] && show_schedule == true">
+              <div class="header">
+                  일정
+              </div>
+              <div class="schedule" ng-repeat="schedule in schedule_list">
+                  <span class="end_date" ng-class="schedule.status">{{schedule.end_date}}</span>
+                  <div class="event">{{schedule.event}}</div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="container" ng-class="(listening == true)?'listening':'not-listening'">
+      <div class="middle-center">
+        <h1 ng-show="focus == 'default'" ng-bind="greeting"></h1>
+        <div class="contents-box subway animate-grow" ng-show="focus == 'subway'">
+            <table class="table table-bordered">
+                <tbody>
+                <tr ng-repeat-start="platform in platforms">
+                    <td rowspan="2">{{platform.line}}호선</td>
+                    <td rowspan="2">{{platform.name}}역</td>
+                    <td class="dir">{{platform.time_table.up.dir}}</td>
+                    <td><span class="subway-time" ng-repeat="t in platform.time_table.up.times">{{ t }}</span></td>
+                </tr>
+                <tr ng-repeat-end>
+                    <td class="dir">{{platform.time_table.down.dir}}</td>
+                    <td><span class="subway-time" ng-repeat="t in platform.time_table.down.times">{{ t }}</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="contents-box video-container animate-grow" ng-show="focus == 'video'">
+          <iframe class="video animate-grow" ng-src="{{video}}"/></iframe>
+        </div>
+        <div class="contents-box sc-container animate-grow" ng-show="focus == 'sc'">
+          <audio id="player" controls="" autoplay="" preload autobuffer style="display: none"></audio>
+          <div><canvas id="visualizer" width="300" height="150"></canvas></div>
+          <img class="sc" ng-src="{{scThumb}}"/>
+          <img class="scWaveform" ng-src="{{scWaveform}}"/>
+          <h2 class="sc" ng-bind="scTrack"></h2>
+        </div>
+        <div class="contents-box map animate-grow" ng-show="focus == 'map'">
+          <img class="contents map animate-grow" ng-src="{{map}}"/>
+        </div>
+        <div class="contents-box gif animate-grow" ng-show="focus == 'gif'">
+          <img class="contents gif animate-grow" ng-src="{{gifimg}}"/>
+        </div>
+      </div>
+      <div class="bottom-center">
+        <!-- Command list -->
+        <div class="commands animate-grow" ng-if="focus == 'commands'">
+          <h2 ng-bind="'commands.title' | translate"></h2>
+          <ul>
+              <li ng-repeat="command in commands">
+                  <b>{{command.text}}</b> : {{command.description}}
+              </li>
+          </ul>
+        </div>
+        <div class="error" ng-bind="speechError" ng-show="speechError"></div>
+        <div class="partial-result" ng-bind="partialResult" ng-hide="speechError"></div>
+      </div>
+      <div class="bottom-left">
+        <div class="playing-track">
+          <img ng-src="{{track.cover}}" />
+          <div>{{track.artist}}</div>
+          <div>{{track.title}}</div>
+          <div>{{track.album}}</div>
+          <div class="nowplaying" ng-show="track.playing">Playing</div>
+        </div>
+      </div>
+      <div class="colors animate-grow" ng-show="focus == 'colors'">
+        <div class="color-block" ng-repeat="color in colors" style="background-color:{{color}}"></div>
+      </div>
+    </div>
+    <!-- Sleep cover -->
+    <div ng-show="focus == 'sleep'" class="sleep-cover fade"></div>
+  </body>
+</html>

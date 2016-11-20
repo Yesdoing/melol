@@ -1,0 +1,163 @@
+{
+    "home" : {
+        "commands" : "\"사용가능한 질문\"이라 말해보세요."
+    },
+    "timer": {
+      "one": "일",
+      "minute": "분",
+      "second": "초"
+    },
+    "commands": {
+        "title" : "사용 가능한 명령",
+        "home": {
+            "text": "메인 화면",
+            "voice": "(홈으로)(집으로)(메인화면)(메인)",
+            "description": "메인 화면으로 돌아갑니다."
+        },
+        "subway": {
+            "text": "지하철 정보",
+            "voice": "지하철 정보 (보자)(보여 줘)",
+            "description": "대구 지하철 정보입니다."
+        },
+        "schedule_show" : {
+            "text": "일정 보여 줘",
+            "voice": "일정 (보여 줘)(보자)",
+            "description": "일정을 표시합니다."
+        },
+        "schedule_hide" : {
+            "text": "일정 숨겨줘",
+            "voice": "일정 (숨겨 줘)(숨겨)",
+            "description": "일정을 숨깁니다."
+        },
+        "music_play": {
+            "text": "음악 재생",
+            "voice": "음악 (재생해 줘)(재생)(틀어)(틀어 줘)",
+            "description": "음악을 재생합니다."
+        },
+        "music_pause": {
+            "text": "음악 중지",
+            "voice": "음악 (중지해 줘)(중지)(멈춰)(멈춰 줘)",
+            "description": "음악을 중지합니다."
+        },
+        "music_resume": {
+            "text": "음악 다시 재생",
+            "voice": "음악 다시 (재생)(재생해 줘)(틀어)(틀어 줘)",
+            "description": "음악을 다시 재생합니다."
+        },
+        "music_prev": {
+            "text": "이전 음악",
+            "voice": "이전 음악",
+            "description": "이전 음악을 재생합니다."
+        },
+        "music_next": {
+            "text": "다음 음악",
+            "voice": "다음 음악",
+            "description": "다음 음악을 재생합니다."
+        },
+        "map_show": {
+            "text": "지도 보여줘",
+            "voice": "지도 (보여 줘)(보자)",
+            "description": "현재 도시의 지도를 보여 줍니다."
+        },
+        "map_location": {
+            "text": "________ 지도",
+            "voice": "*location지도 (보여 줘)(보자)",
+            "description": "주어진 위치의 지도를 보여 줍니다."
+        },
+        "map_zoom_in": {
+            "text": "지도 확대",
+            "voice": "(지도) 확대",
+            "description": "현재 지도를 확대 합니다."
+        },
+        "map_zoom_out": {
+            "text": "지도 축소",
+            "voice": "(지도) 축소",
+            "description": "현재 지도를 축소 합니다."
+        },
+        "youtube_play": {
+            "text": "________ YouTube 동영상 재생",
+            "voice": "*keyword 동영상 (보여 줘)(보자)",
+            "description": "YouTube 동영상을 재생합니다."
+        },
+        "youtube_stop": {
+            "text": "YouTube 동영상 재생",
+            "voice": "동영상 (중지)(멈춰)(정지)",
+            "description": "YouTube 동영상을 중지합니다."
+        },
+        "list": {
+            "text": "사용 가능한 질문",
+            "voice": "사용 가능한 질문",
+            "description": "사용 가능한 질문입니다."
+        },
+        "sleep": {
+            "text": "잠 자러가",
+            "voice": "(잠) 자러가",
+            "description": "'Sleep' 모드로 진입합니다."
+        },
+        "wake_up": {
+            "text": "일어나",
+            "voice": "일어나",
+            "description": "'Wake Up' 모드로 진입합니다."
+        },
+        "image_giphy": {
+            "text": "________ 짤",
+            "voice": "*img짤",
+            "description": "gif 이미지를 보여줍니다."
+        },
+        "image_comic": {
+            "text": "카툰 보고 싶어",
+            "voice": "카툰 보고 싶어",
+            "description": "카툰을 보여줍니다."
+        },
+        "image_comic_dilbert": {
+            "text": "Comic Dilbert",
+            "voice": "Comic Dilbert",
+            "description": "Muestra el comic Dilbert."
+        },
+        "time_show": {
+            "text": "지금 몇 시",
+            "voice": "지금 몇 시",
+            "description": "지금 몇 시."
+        },
+        "timer_start": {
+            "text": "______ 타이머 (설정)",
+            "voice": "*duration 타이머 (설정)",
+            "description": "*duration 타이머 (설정)."
+        },
+        "timer_show": {
+            "text": "타이머 보여줄래",
+            "voice": "타이머 보여줄래",
+            "description": "타이머 보여줄래."
+        },
+        "timer_stop": {
+            "text": "타이머 정지",
+            "voice": "타이머 정지",
+            "description": "타이머 정지."
+        },
+        "timer_resume": {
+            "text": "타이머 재시작",
+            "voice": "타이머 재시작",
+            "description": "타이머 재시작."
+        },
+        "sc_play": {
+            "text": "SoundCloud play ________",
+            "voice": "SoundCloud play *query",
+            "description": "Play a song on SoundCloud."
+        },
+        "sc_pause": {
+            "text": "SoundCloud pause/stop",
+            "voice": "SoundCloud (pause)(post)(stop)(stock)",
+            "description": "Stop/pause SoundCloud playback."
+        },
+        "sc_resume": {
+            "text": "SoundCloud play",
+            "voice": "SoundCloud (play)(resume)",
+            "description": "Resumes playback."
+        },
+        "sc_replay": {
+            "text": "SoundCloud replay",
+            "voice": "SoundCloud replay",
+            "description": "Replays the current song on SoundCloud."
+        }
+    }
+}
