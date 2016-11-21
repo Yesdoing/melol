@@ -29,6 +29,31 @@
             "voice": "일정 (숨겨 줘)(숨겨)",
             "description": "일정을 숨깁니다."
         },
+        "album_view" : {
+            "text": "앨범 보여줘",
+            "voice": "(사진) 앨범 보여 줘",
+            "description": "촬영한 사진들을 보여줍니다."
+        },
+        "album_prev" : {
+            "text": "앨범 이전 페이지",
+            "voice": "이전 (페이지)(앨범)",
+            "description": "이전 페이지로 넘어갑니다."
+        },
+        "album_next": {
+            "text": "앨범 다음 페이지",
+            "voice": "다음 (페이지)(앨범)",
+            "description": "다음 페이지로 넘어갑니다."
+        },
+        "album_detail": {
+            "text": "____번 사진 보여줘",
+            "voice": "*photoNum번 사진 (보여 줘)(보자)",
+            "description": "사진을 자세히 볼 수 있습니다."
+        },
+        "album_back": {
+            "text": "다시 앨범 목록으로",
+            "voice": "뒤로",
+            "description": "앨범 목록으로 돌아갑니다."
+        },
         "music_play": {
             "text": "음악 재생",
             "voice": "음악 (재생해 줘)(재생)(틀어)(틀어 줘)",

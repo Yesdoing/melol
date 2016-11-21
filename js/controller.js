@@ -9,8 +9,8 @@
             MapService,
             GiphyService,
             SearchService,
-            SoundCloudService,
             AudioService,
+            AlbumService,
             $rootScope, $scope, $timeout, $interval, tmhDynamicLocale, $translate, $http) {
 
         // Local Scope Vars
@@ -21,7 +21,8 @@
 
         /* 테스트 .. */
         setTimeout(function() {
-            SpeechService.trigger("음악 재생");
+//            SpeechService.trigger("음악 재생");
+            SpeechService.trigger("앨범 보여 줘")
         }, 1000);
 
         $scope.user = {};
@@ -127,17 +128,7 @@
             $scope.getSchedules();
 
             updateTime();
-
-//            GeolocationService.getLocation({enableHighAccuracy: true}).then(function(geoposition){
-//                console.log("Geoposition", geoposition);
-//                $scope.map = MapService.generateMap(geoposition.coords.latitude+','+geoposition.coords.longitude);
-//            });
-
             restCommand();
-
-            //Initialize SoundCloud
-            var playing = false, sound;
-            SoundCloudService.init();
 
             var refreshWeatherData = function() {
                 //Get our location and then get the weather for our location
@@ -216,19 +207,6 @@
             // Go back to default view
             addCommand('wake_up', defaultView);
 
-//            // Turn off HDMI output
-//            addCommand('screen_off', function() {
-//                console.debug('turning screen off');
-//                AutoSleepService.sleep();
-//            });
-//
-//            // Turn on HDMI output
-//            addCommand('screen_on', function() {
-//                console.debug('turning screen on');
-//                AutoSleepService.wake();
-//                $scope.focus = "default"
-//            });
-
             // Show map
             addCommand('map_show', function() {
                 console.debug("Going on an adventure?");
@@ -260,37 +238,6 @@
             addCommand('subway', function() {
                 $scope.getSubwayInfo();
                 $scope.focus = 'subway';
-            });
-
-            //SoundCloud search and play
-            addCommand('sc_play', function(query) {
-                SoundCloudService.searchSoundCloud(query).then(function(response){
-                    if (response[0].artwork_url){
-                        $scope.scThumb = response[0].artwork_url.replace("-large.", "-t500x500.");
-                    } else {
-                        $scope.scThumb = 'http://i.imgur.com/8Jqd33w.jpg?1';
-                    }
-                    $scope.scWaveform = response[0].waveform_url;
-                    $scope.scTrack = response[0].title;
-                    $scope.focus = "sc";
-                    SoundCloudService.play();
-                });
-            });
-
-            //SoundCloud stop
-            addCommand('sc_pause', function() {
-                SoundCloudService.pause();
-                $scope.focus = "default";
-            });
-            //SoundCloud resume
-            addCommand('sc_resume', function() {
-                SoundCloudService.play();
-                $scope.focus = "sc";
-            });
-            //SoundCloud replay
-            addCommand('sc_replay', function() {
-                SoundCloudService.replay();
-                $scope.focus = "sc";
             });
 
             addCommand('schedule_show', function() {
@@ -347,6 +294,44 @@
                 $scope.listening_music = false;
             });
 
+            addCommand('album_view', function() {
+                AlbumService.getAlbum().then(function (response) {
+                    $scope.album = response;
+                    $scope.focus = 'album';
+                }, function(error) {
+                    console.log("Error!");
+                });
+            });
+
+            addCommand('album_prev', function() {
+                AlbumService.prevAlbumPage().then(function(response) {
+                    $scope.album = response;
+                }, function (error) {
+                    console.log("Error!");
+                });
+            });
+
+            addCommand('album_next', function() {
+                AlbumService.nextAlbumPage().then(function(response) {
+                    $scope.album = response;
+                }, function (error) {
+                    console.log("Error!");
+                });
+            });
+
+            $scope.cur_photo = null;
+
+            addCommand('album_detail', function(photo_id) {
+                $scope.focus = 'detail_album';
+                $scope.cur_photo = $scope.album[photo_id-1];
+            });
+
+            addCommand('album_back', function() {
+                if($scope.focus === 'detail_album') {
+                    $scope.focus = 'album';
+                }
+            });
+
             // Check the time
             addCommand('time_show', function(task) {
                  console.debug("It is", moment().format('h:mm:ss a'));
@@ -359,6 +344,21 @@
                     $scope.focus = "gif";
                 });
             });
+
+
+
+//            // Turn off HDMI output
+//            addCommand('screen_off', function() {
+//                console.debug('turning screen off');
+//                AutoSleepService.sleep();
+//            });
+//
+//            // Turn on HDMI output
+//            addCommand('screen_on', function() {
+//                console.debug('turning screen on');
+//                AutoSleepService.wake();
+//                $scope.focus = "default"
+//            });
         };
         _this.init();
     }
