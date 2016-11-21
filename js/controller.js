@@ -10,6 +10,7 @@
             GiphyService,
             SearchService,
             SoundCloudService,
+            AudioService,
             $rootScope, $scope, $timeout, $interval, tmhDynamicLocale, $translate, $http) {
 
         // Local Scope Vars
@@ -20,7 +21,7 @@
 
         /* 테스트 .. */
         setTimeout(function() {
-            SpeechService.trigger("지하철 정보");
+            SpeechService.trigger("음악 재생");
         }, 1000);
 
         $scope.user = {};
@@ -316,6 +317,34 @@
               var iframe = document.getElementsByTagName("iframe")[0].contentWindow;
               iframe.postMessage('{"event":"command","func":"' + 'stopVideo' +   '","args":""}', '*');
               $scope.focus = "default";
+            });
+
+
+            //Play music
+            addCommand('music_play', function() {
+                AudioService.init();
+                $scope.listening_music = true;
+            });
+
+            addCommand('music_pause', function() {
+                AudioService.stopMusic();
+            });
+
+            addCommand('music_resume', function() {
+                AudioService.resumeMusic();
+            });
+
+            addCommand('music_prev', function() {
+                AudioService.prevMusic();
+            });
+
+            addCommand('music_next', function() {
+                AudioService.nextMusic();
+            });
+
+            addCommand('music_exit', function() {
+                AudioService.exitMusic();
+                $scope.listening_music = false;
             });
 
             // Check the time
