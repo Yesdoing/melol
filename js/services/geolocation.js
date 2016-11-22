@@ -1,54 +1,41 @@
 (function() {
     'use strict';
 
-    function GeolocationService($q,$rootScope,$window, $http) {
+    function GeolocationService($q , $http) {
         var service = {};
-        var geolocation_msgs = {
-            'errors.location.unsupportedBrowser':'Browser does not support location services',
-            'errors.location.permissionDenied':'You have rejected access to your location',
-            'errors.location.positionUnavailable':'Unable to determine your location',
-            'errors.location.timeout':'Service timeout has been reached'
-        };
+        var geoloc = null;
 
         service.getLocation = function () {
             var deferred = $q.defer();
-            if ($window.navigator && $window.navigator.geolocation) {
-                $http({
-                    'method':'get',
-                    'url':'http://ipinfo.io'
-                }).success(function(ipinfo) {
-                    var position = {
-                        'latitude':ipinfo.loc.split(",")[0],
-                        'longitude':ipinfo.loc.split(",")[1]
-                    };
-                    deferred.resolve(position);
-                }).error(function(error) {
-                    switch (error.code) {
-                        case 1:
-                            $rootScope.$broadcast('error',geolocation_msgs['errors.location.permissionDenied']);
-                            $rootScope.$apply(function() {
-                                deferred.reject(geolocation_msgs['errors.location.permissionDenied']);
-                            });
-                            break;
-                        case 2:
-                            $rootScope.$broadcast('error',geolocation_msgs['errors.location.positionUnavailable']);
-                            $rootScope.$apply(function() {
-                                deferred.reject(geolocation_msgs['errors.location.positionUnavailable']);
-                            });
-                            break;
-                        case 3:
-                            $rootScope.$broadcast('error',geolocation_msgs['errors.location.timeout']);
-                            $rootScope.$apply(function() {
-                                deferred.reject(geolocation_msgs['errors.location.timeout']);
-                            });
-                            break;
-                    }
+
+            // Use geo postion from config file if it is defined
+            if(typeof config.geoPosition != 'undefined'
+                && typeof config.geoPosition.latitude != 'undefined'
+                && typeof config.geoPosition.longitude != 'undefined'){
+
+                deferred.resolve({
+                    latitude: config.geoPosition.latitude,
+                    longitude: config.geoPosition.longitude
                 });
+
+            } else {
+                if(geoloc !== null){
+                    console.log("Cached Geolocation", geoloc);
+                    return(geoloc);
+                }
+
+                $http.get("https://maps.googleapis.com/maps/api/browserlocation/json?browser=chromium").then(
+                    function(result){
+                        var location = angular.fromJson(result).data.location
+                        deferred.resolve({'latitude': location.lat, 'longitude':location.lng})
+                    },
+                    function(err) {
+                        console.debug("Failed to retrieve geolocation.")
+                        deferred.reject("Failed to retrieve geolocation.")
+                    });
             }
-            else {
-                $rootScope.$broadcast('error',geolocation_msgs['errors.location.unsupportedBrowser']);
-                $rootScope.$apply(function(){deferred.reject(geolocation_msgs['errors.location.unsupportedBrowser']);});
-            }
+
+            geoloc = deferred.promise;
             return deferred.promise;
         };
         

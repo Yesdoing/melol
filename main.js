@@ -109,4 +109,17 @@ app.on('window-all-closed', function () {
 // No matter how the app is quit, we should clean up after ourselvs
 app.on('will-quit', function () {
   kwsProcess.kill()
-})
+});
+
+electron.ipcMain.on('take-photo', function(event) {
+//  테스트로 date 명령어의 출력 결과를 넘겨준다.
+    exec("python3 ../picam_main.py", function (error, stdout, stderr) {
+        if (error === null) {
+            event.sender.send('take-photo-complete', stdout);
+            console.log("file name is", stdout);
+        }
+        else {
+            console.log('exec error: ' + error);
+        }
+    });
+});

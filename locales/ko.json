@@ -29,6 +29,21 @@
             "voice": "일정 (숨겨 줘)(숨겨)",
             "description": "일정을 숨깁니다."
         },
+        "camera": {
+            "text": "카메라",
+            "voice": "(카메라)(카메라 모드)(사진 찍을래)(사진 찍자)",
+            "description": "카메라 모드로 전환합니다."
+        },
+        "camera_take": {
+            "text": "사진 촬영",
+            "voice": "촬영 (해 줘)(하자)",
+            "description": "사진을 촬영합니다."
+        },
+        "camera_exit": {
+            "text": "카메라 종료",
+            "voice": "카메라 종료(해 줘)",
+            "description": "카메라 모드를 종료합니다."
+        },
         "album_view" : {
             "text": "앨범 보여줘",
             "voice": "(사진) 앨범 보여 줘",
@@ -129,21 +144,6 @@
             "voice": "일어나",
             "description": "'Wake Up' 모드로 진입합니다."
         },
-        "image_giphy": {
-            "text": "________ 짤",
-            "voice": "*img짤",
-            "description": "gif 이미지를 보여줍니다."
-        },
-        "image_comic": {
-            "text": "카툰 보고 싶어",
-            "voice": "카툰 보고 싶어",
-            "description": "카툰을 보여줍니다."
-        },
-        "image_comic_dilbert": {
-            "text": "Comic Dilbert",
-            "voice": "Comic Dilbert",
-            "description": "Muestra el comic Dilbert."
-        },
         "time_show": {
             "text": "지금 몇 시",
             "voice": "지금 몇 시",
@@ -168,26 +168,6 @@
             "text": "타이머 재시작",
             "voice": "타이머 재시작",
             "description": "타이머 재시작."
-        },
-        "sc_play": {
-            "text": "SoundCloud play ________",
-            "voice": "SoundCloud play *query",
-            "description": "Play a song on SoundCloud."
-        },
-        "sc_pause": {
-            "text": "SoundCloud pause/stop",
-            "voice": "SoundCloud (pause)(post)(stop)(stock)",
-            "description": "Stop/pause SoundCloud playback."
-        },
-        "sc_resume": {
-            "text": "SoundCloud play",
-            "voice": "SoundCloud (play)(resume)",
-            "description": "Resumes playback."
-        },
-        "sc_replay": {
-            "text": "SoundCloud replay",
-            "voice": "SoundCloud replay",
-            "description": "Replays the current song on SoundCloud."
         }
     }
 }

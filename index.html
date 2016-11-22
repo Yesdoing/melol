@@ -14,9 +14,9 @@
     <script src="bower_components/angular-translate/angular-translate.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
     <script src="bower_components/rrule/lib/rrule.js"></script>
-    <!-- endbower -->
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 
-    <script src="js/inc/skycons.js"></script>
+      <!-- endbower -->
 
     <!-- App -->
     <script src="config.js"></script>
@@ -27,7 +27,6 @@
     <script src="js/services/speech.js"></script>
     <script src="js/services/weather.js"></script>
     <script src="js/services/map.js"></script>
-    <script src="js/services/giphy.js"></script>
     <script src="js/services/geolocation.js"></script>
     <script src="js/services/autosleep.js"></script>
     <script src="js/services/audio.js"></script>
@@ -53,8 +52,16 @@
                   <i class="wi {{currentForcast.icon}}"></i>{{currentForcast.temperature}}<i class="wi wi-degrees"></i>c
               </span>
           </div>
-        <!--<div class="date grey"><span ng-bind="date.format('dddd')"></span>, <span ng-bind="date.format('LL')"></span></div>-->
-        <!--<div class="time" ng-bind="date.format('LT')"></div>-->
+          <div class="notis">
+              <div class="header">알림</div>
+              <ul>
+                  <li class="noti" ng-repeat="noti in notis | orderBy:'-'">
+                      <img class="noti-icon" ng-src="img/{{noti.type}}.png" alt=""/>
+                      <div class="noti-msg">{{ noti.msg }}</div>
+                      <span class="noti-title">{{ noti.title }}</span>
+                  </li>
+              </ul>
+          </div>
       </div>
 
       <div class="top-right">
@@ -116,6 +123,17 @@
               <img ng-src="{{ cur_photo.file }}" alt=""/>
           </div>
         </div>
+          <div class="contents-box camera animate-grow" ng-show="focus == 'camera'">
+              <div ng-show="stream">
+                  <p>촬영 대기 중</p>
+                  <img src="http://192.168.35.61:8080/?action=stream" style="border: solid 2px red;"/>
+              </div>
+              <div ng-hide="stream">
+                  <p>촬영된 사진</p>
+                  <img ng-src="{{photo_snapshot}}" style="border:solid 2px white;"/>
+              </div>
+              <button ng-click="takePhoto()">사진 촬영</button>
+          </div>
       </div>
       <div class="bottom-center">
         <!-- Command list -->

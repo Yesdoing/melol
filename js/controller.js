@@ -7,7 +7,6 @@
             GeolocationService,
             WeatherService,
             MapService,
-            GiphyService,
             SearchService,
             AudioService,
             AlbumService,
@@ -18,11 +17,14 @@
         $scope.listening = false;
         $scope.debug = false;
         $scope.focus = "default";
+        var socket = io.connect(config.SOCKET_SERVER_URL);
+        var ipc = require('electron').ipcMain;
 
         /* 테스트 .. */
         setTimeout(function() {
 //            SpeechService.trigger("음악 재생");
-            SpeechService.trigger("앨범 보여 줘")
+//            SpeechService.trigger("앨범 보여 줘")
+            SpeechService.trigger("지도 보자");
         }, 1000);
 
         $scope.user = {};
@@ -133,6 +135,7 @@
             var refreshWeatherData = function() {
                 //Get our location and then get the weather for our location
                 GeolocationService.getLocation().then(function (geoposition) {
+                    console.log("My GeoPosition is", geoposition);
                     WeatherService.init(geoposition).then(function () {
                         $scope.currentForcast = WeatherService.currentForcast();
                         console.log("geoposition is", geoposition);
@@ -206,6 +209,20 @@
 
             // Go back to default view
             addCommand('wake_up', defaultView);
+
+            addCommand('camera', function() {
+                //
+                $scope.focus = 'camera';
+            });
+
+            addCommand('camera_take', function() {
+                //
+                ipc.send('take-photo');
+            });
+
+            addCommand('camera_exit', function() {
+               //
+            });
 
             // Show map
             addCommand('map_show', function() {
@@ -337,13 +354,6 @@
                  console.debug("It is", moment().format('h:mm:ss a'));
             });
 
-            //Show giphy image
-            addCommand('image_giphy', function(img) {
-                GiphyService.init(img).then(function(){
-                    $scope.gifimg = GiphyService.giphyImg();
-                    $scope.focus = "gif";
-                });
-            });
 
 
 
@@ -361,6 +371,54 @@
 //            });
         };
         _this.init();
+
+        socket.on('schedule_removed', function(data) {
+           $scope.schedule_list.forEach(function(elem, i){
+               console.log("elem.id is", elem.id);
+
+               if(elem.id == data.id) {
+                   $scope.schedule_list.splice(i, 1);
+                   console.log("FInd!", elem.id);
+               }
+           });
+//           console.log('removed!', data.id);
+            console.log("data.id is", data.id);
+           $scope.$apply();
+        });
+
+        socket.on('schedule_changed', function() {
+            $scope.getSchedules();
+            $scope.$apply();
+        });
+
+        socket.on('rmnoti', function(type) {
+            $scope.$apply(function() {
+                for(var i = $scope.notis.length-1; i >= 0; i--) {
+                    if ($scope.notis[i].type == type) {
+                        $scope.notis.splice(i, 1);
+                    }
+                }
+            });
+        });
+
+        socket.on('newnoti', function(data) {
+            $scope.$apply(function() {
+                $scope.notis.push(data);
+            });
+        });
+
+        $scope.stream = true;
+
+        ipc.on('take-photo-complete', function(event, arg) {
+            console.log("사진 촬영 명령어 완료", arg);
+            $scope.stream = false;
+            $scope.photo_snapshot = arg;
+            $scope.$apply();
+            setTimeout(function() {
+                $scope.stream = true;
+                $scope.$apply();
+            }, 6000);
+        });
     }
 
     angular.module('SmartMirror')
