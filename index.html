@@ -123,16 +123,15 @@
               <img ng-src="{{ cur_photo.file }}" alt=""/>
           </div>
         </div>
-          <div class="contents-box camera animate-grow" ng-show="focus == 'camera'">
+          <div class="camera animate-grow" ng-show="focus == 'camera'">
               <div ng-show="stream">
                   <p>촬영 대기 중</p>
-                  <img src="http://192.168.35.61:8080/?action=stream" style="border: solid 2px red;"/>
+                  <img src="http://localhost:8080/?action=stream" style="border: solid 2px red;"/>
               </div>
               <div ng-hide="stream">
                   <p>촬영된 사진</p>
                   <img ng-src="{{photo_snapshot}}" style="border:solid 2px white;"/>
               </div>
-              <button ng-click="takePhoto()">사진 촬영</button>
           </div>
       </div>
       <div class="bottom-center">

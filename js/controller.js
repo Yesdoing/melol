@@ -18,7 +18,7 @@
         $scope.debug = false;
         $scope.focus = "default";
         var socket = io.connect(config.SOCKET_SERVER_URL);
-        var ipc = require('electron').ipcMain;
+        const {ipcRenderer} = require('electron');
 
         /* 테스트 .. */
         setTimeout(function() {
@@ -217,7 +217,7 @@
 
             addCommand('camera_take', function() {
                 //
-                ipc.send('take-photo');
+                ipcRenderer.send('take-photo');
             });
 
             addCommand('camera_exit', function() {
@@ -409,7 +409,7 @@
 
         $scope.stream = true;
 
-        ipc.on('take-photo-complete', function(event, arg) {
+        ipcRenderer.on('take-photo-complete', function(event, arg) {
             console.log("사진 촬영 명령어 완료", arg);
             $scope.stream = false;
             $scope.photo_snapshot = arg;
