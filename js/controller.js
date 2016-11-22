@@ -391,6 +391,8 @@
             $scope.$apply();
         });
 
+        $scope.notis = [];
+
         socket.on('rmnoti', function(type) {
             $scope.$apply(function() {
                 for(var i = $scope.notis.length-1; i >= 0; i--) {
