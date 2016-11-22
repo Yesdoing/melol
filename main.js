@@ -3,6 +3,7 @@
 const electron = require('electron')
 // Child Process for keyword spotter
 const {spawn} = require('child_process')
+const exec = require('child_process').exec;
 // Module to control application life.
 const app = electron.app
 // Module to create native browser window.
