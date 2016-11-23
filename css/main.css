@@ -637,12 +637,12 @@ ul.calendar {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 55px;
+    width: 75px;
 }
 
 .noti .noti-msg {
     display: inline-block;
-    width: 260px;
+    width: 240px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
