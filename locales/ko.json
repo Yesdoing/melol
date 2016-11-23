@@ -125,7 +125,7 @@
             "description": "YouTube 동영상을 재생합니다."
         },
         "youtube_stop": {
-            "text": "YouTube 동영상 재생",
+            "text": "YouTube 동영상 중지",
             "voice": "동영상 (중지)(멈춰)(정지)",
             "description": "YouTube 동영상을 중지합니다."
         },

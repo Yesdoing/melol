@@ -78,10 +78,12 @@ dt {
 
 .partial-result {
     font-family: 'Open Sans', sans-serif;
+    font-size: 25px;
 }
 
 .top-left {
     float: left;
+    margin-left: 20px;
 }
 
 .middle-center {
@@ -90,9 +92,11 @@ dt {
     align-items: stretch;
     align-self: flex-start;
     flex-direction: column;
-    width: 100%;
     text-align: center;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
 }
 
 .bottom-center {
@@ -118,10 +122,11 @@ dt {
 }
 
 .commands {
-    width: 450px;
+    width: 600px;
     text-align: left;
     margin-left: auto;
     margin-right: auto;
+    font-size: 20px;
 }
 
 ul.calendar {
@@ -439,13 +444,18 @@ ul.calendar {
 }
 
 .temperature .wi {
-    font-size: 50px;
+    font-size: 60px;
     margin-left: 20px;
     margin-right: 20px;
 }
 
 .wi.wi-degrees {
-    margin: 0 0 0 10px;
+    margin: 0 10px;
+    font-size: 60px;
+}
+
+#c {
+    font-size: 65px;
 }
 
 .date {
@@ -459,10 +469,11 @@ ul.calendar {
 
 .schedules {
     font-family: 'Open Sans', sans-serif;
-    width: 320px;
+    width: 400px;
     height: auto;
     display: inline-block;
     float: right;
+    font-size: 20px;
 }
 
 .schedule {
@@ -481,7 +492,7 @@ ul.calendar {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    width: 220px;
+    width: 270px;
 }
 
 .schedule .end_date {
@@ -495,16 +506,17 @@ ul.calendar {
 
 .header {
     text-align: center;
-    width: 320px;
+    width: 400px;
     padding: 10px;
-    font-size: 16px;
+    font-size: 20px;
     border: solid 1px #fff;
 }
 
 .subway table {
-    width: 500px;
+    width: 800px;
     height: auto;
     margin: 20px auto 20px auto;
+    font-size: 25px;
 }
 
 .subway .subway-time {
@@ -517,22 +529,16 @@ ul.calendar {
 }
 
 .subway td.dir {
-    height: 37px;
+    height: 50px;
 }
 
 .map {
-    height: 400px;
+    height: 600px;
     width: 100%;
 }
 
-.middle-center {
-    margin-left: auto;
-    margin-right: auto;
-    width: 700px;
-}
-
 .container {
-    padding-top: 100px;
+    /*padding-top: 100px;*/
 }
 
 .music-status {
@@ -556,22 +562,22 @@ ul.calendar {
 
 .music-title {
     display: inline-block;
-    font-size: 25px;
+    font-size: 35px;
 }
 
 .album {
-    width: 480px;
+    width: 1000px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .photo {
-    width: 150px;
-    height: 120px;
+    width: 32%;
+    height: 200px;
     float: left;
     position: relative;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin-right: 1.3%;
+    margin-bottom: 1.3%;
 }
 
 .photo img {
@@ -586,13 +592,16 @@ ul.calendar {
     background-color: #fff;
     font-weight: 700;
     color: #000;
-    padding: 0 5px;
+    padding: 0 10px;
     border-radius: 5px;
+    font-size: 20px;
 }
 
 .detail-photo {
-    width: 500px !important;
-    height: 350px !important;
+    width: 800px !important;
+    height: 500px !important;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .detail-photo img {
@@ -601,10 +610,10 @@ ul.calendar {
 }
 
 .notis {
-    width: 320px;
+    width: 400px;
     display: inline-block;
     height: auto;
-    margin-left: 20px;
+    font-size: 20px !important;
 }
 
 .notis ul {
@@ -623,12 +632,17 @@ ul.calendar {
 }
 
 .noti .noti-title {
+    display: inline-block;
     float: right;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 55px;
 }
 
 .noti .noti-msg {
     display: inline-block;
-    width: 220px;
+    width: 260px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -638,8 +652,8 @@ ul.calendar {
     margin-right: 10px;
     display: inline-block;
     vertical-align: baseline;
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
 }
 
 .notis li.noti.ng-enter {
@@ -667,13 +681,24 @@ ul.calendar {
 }
 
 .camera {
-    width: 600px;
+    width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .camera img {
     width: 100%;
-    height: 450px;
+    height: 600px;
 }
 
+.top-left .weather-today {
+    text-align: center;
+}
+
+.top-right .date, .top-right .time {
+    text-align: center;
+}
+
+.camera-help-text {
+    font-size: 25px;
+}

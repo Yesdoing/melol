@@ -49,7 +49,7 @@
       <div class="top-left">
           <div class="weather-today">
               <span class="temperature">
-                  <i class="wi {{currentForcast.icon}}"></i>{{currentForcast.temperature}}<i class="wi wi-degrees"></i>c
+                  <i class="wi {{currentForcast.icon}}"></i>{{currentForcast.temperature}}<i class="wi wi-degrees"></i><span id="c">C</span>
               </span>
           </div>
           <div class="notis">
@@ -125,11 +125,11 @@
         </div>
           <div class="camera animate-grow" ng-show="focus == 'camera'">
               <div ng-show="stream">
-                  <p>촬영 대기 중</p>
+                  <p class="camera-help-text">촬영 대기 중</p>
                   <img src="http://localhost:8080/?action=stream" style="border: solid 2px red;"/>
               </div>
               <div ng-hide="stream">
-                  <p>촬영된 사진</p>
+                  <p class="camera-help-text">촬영된 사진</p>
                   <img ng-src="{{photo_snapshot}}" style="border:solid 2px white;"/>
               </div>
           </div>

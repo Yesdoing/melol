@@ -10,7 +10,7 @@
             SearchService,
             AudioService,
             AlbumService,
-            $rootScope, $scope, $timeout, $interval, tmhDynamicLocale, $translate, $http) {
+            $scope, $timeout, $interval, $translate, $http) {
 
         // Local Scope Vars
         var _this = this;
@@ -24,7 +24,11 @@
         setTimeout(function() {
 //            SpeechService.trigger("음악 재생");
 //            SpeechService.trigger("앨범 보여 줘")
-            SpeechService.trigger("지도 보자");
+//            SpeechService.trigger("지하철 정보");
+//            SpeechService.trigger("지도 보자");
+//            SpeechService.trigger("손흥민 동영상 보여 줘");
+//            SpeechService.trigger("카메라");
+            SpeechService.trigger("사용 가능한 질문");
         }, 1000);
 
         $scope.user = {};
@@ -391,7 +395,10 @@
             $scope.$apply();
         });
 
-        $scope.notis = [];
+        $scope.notis = [{'type':'com.kakao.talk', 'title':'발신자', 'msg':'aasdfa'},
+            {'type':'com.android.mms', 'title':'010-3353-5858', 'msg':'asdadfasfasdfkljjkaasdfklafsdjkfadsklfalkldfjkladfkjlsdf'},
+            {'type':'com.android.server.telecom', 'title':'발신', 'msg':'가나다라마바사아자차타카파하가나다라마바사아자차타카파하'}];
+
 
         socket.on('rmnoti', function(type) {
             $scope.$apply(function() {

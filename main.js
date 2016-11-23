@@ -50,7 +50,7 @@ function createWindow () {
     }
   }
 
-  var browserWindowOptions = {width: 1440, height: 800, icon: 'favicon.ico' , kiosk:false, autoHideMenuBar:true, darkTheme:true};
+  var browserWindowOptions = {width: 1185, height: 625, icon: 'favicon.ico' , kiosk:false, autoHideMenuBar:true, darkTheme:true};
   if (externalDisplay) {
     browserWindowOptions.x = externalDisplay.bounds.x + 50
     browserWindowOptions.y = externalDisplay.bounds.y + 50
@@ -80,12 +80,12 @@ function createWindow () {
 var kwsProcess = spawn('node', ['./sonus.js'], {detached: false})
 // Handel messages from node
 kwsProcess.stderr.on('data', function (data) {
-    var message = data.toString()
+    var message = data.toString();
     console.log("ERROR", message.substring(4))
-})
+});
 
 kwsProcess.stdout.on('data', function (data) {
-    var message = data.toString()
+    var message = data.toString();
     if(message.startsWith('!h:')){
         mainWindow.webContents.send('hotword', true)
     }else if (message.startsWith('!p:')){
