@@ -50,8 +50,8 @@ function createWindow () {
     }
   }
 
-//  var browserWindowOptions = {width: 1185, height: 625, icon: 'favicon.ico' , kiosk:true, autoHideMenuBar:true, darkTheme:true};
-  var browserWindowOptions = {width: 1800, height: 1200, icon: 'favicon.ico' , kiosk:false, autoHideMenuBar:true, darkTheme:true};
+  var browserWindowOptions = {width: 1185, height: 625, icon: 'favicon.ico' , kiosk:true, autoHideMenuBar:true, darkTheme:true};
+//  var browserWindowOptions = {width: 1800, height: 1200, icon: 'favicon.ico' , kiosk:false, autoHideMenuBar:true, darkTheme:true};
   if (externalDisplay) {
     browserWindowOptions.x = externalDisplay.bounds.x + 50
     browserWindowOptions.y = externalDisplay.bounds.y + 50

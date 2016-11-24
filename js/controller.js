@@ -366,22 +366,6 @@
             addCommand('time_show', function(task) {
                  console.debug("It is", moment().format('h:mm:ss a'));
             });
-
-
-
-
-//            // Turn off HDMI output
-//            addCommand('screen_off', function() {
-//                console.debug('turning screen off');
-//                AutoSleepService.sleep();
-//            });
-//
-//            // Turn on HDMI output
-//            addCommand('screen_on', function() {
-//                console.debug('turning screen on');
-//                AutoSleepService.wake();
-//                $scope.focus = "default"
-//            });
         };
         _this.init();
 
@@ -404,9 +388,11 @@
             $scope.$apply();
         });
 
-        $scope.notis = [{'type':'com.kakao.talk', 'title':'발신자', 'msg':'aasdfa'},
-            {'type':'com.android.mms', 'title':'010-3353-5858', 'msg':'asdadfasfasdfkljjkaasdfklafsdjkfadsklfalkldfjkladfkjlsdf'},
-            {'type':'com.android.server.telecom', 'title':'발신', 'msg':'가나다라마바사아자차타카파하가나다라마바사아자차타카파하'}];
+//        $scope.notis = [{'type':'com.kakao.talk', 'title':'발신자', 'msg':'aasdfa'},
+//            {'type':'com.android.mms', 'title':'010-3353-5858', 'msg':'asdadfasfasdfkljjkaasdfklafsdjkfadsklfalkldfjkladfkjlsdf'},
+//            {'type':'com.android.server.telecom', 'title':'발신', 'msg':'가나다라마바사아자차타카파하가나다라마바사아자차타카파하'}];
+
+        $scope.notis = [];
 
 
         socket.on('rmnoti', function(type) {
