@@ -45,7 +45,7 @@
 
   </head>
   <body ng-controller="MirrorCtrl" ng-cloak="">
-    <div class="top">
+    <div class="top" ng-hide="focus == 'sleep'">
       <div class="top-left">
           <div class="weather-today">
               <span class="temperature">
@@ -67,7 +67,7 @@
       <div class="top-right">
           <div class="date grey">{{date | date : 'EEE, MMM d yyyy'}}</div>
           <div class="time">{{ date | date : 'hh:mm a' }}</div>
-          <div class="schedules" ng-show="schedule_list != [] && show_schedule == true">
+          <div class="schedules" ng-show="show_schedule">
               <div class="header">
                   일정
               </div>
@@ -89,6 +89,7 @@
     <div class="container" ng-class="(listening == true)?'listening':'not-listening'">
       <div class="middle-center">
         <h1 ng-show="focus == 'default'" ng-bind="greeting"></h1>
+        <h2 ng-show="isSayHi">안녕하세요? 반갑습니다 :D</h2>
         <div class="contents-box subway animate-grow" ng-show="focus == 'subway'">
             <table class="table table-bordered">
                 <tbody>
@@ -146,9 +147,6 @@
         </div>
         <div class="error" ng-bind="speechError" ng-show="speechError"></div>
         <div class="partial-result" ng-bind="partialResult" ng-hide="speechError"></div>
-      </div>
-      <div class="colors animate-grow" ng-show="focus == 'colors'">
-        <div class="color-block" ng-repeat="color in colors" style="background-color:{{color}}"></div>
       </div>
     </div>
     <!-- Sleep cover -->

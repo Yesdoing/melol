@@ -28,7 +28,7 @@
 //            SpeechService.trigger("지도 보자");
 //            SpeechService.trigger("손흥민 동영상 보여 줘");
 //            SpeechService.trigger("카메라");
-            SpeechService.trigger("사용 가능한 질문");
+//            SpeechService.trigger("사용 가능한 질문");
         }, 1000);
 
         $scope.user = {};
@@ -165,7 +165,7 @@
                         greetingTime = "night";
                     }
                     var nextIndex = Math.floor(Math.random() * config.greeting[greetingTime].length);
-                    var nextGreeting = config.greeting[greetingTime][nextIndex]
+                    var nextGreeting = config.greeting[greetingTime][nextIndex];
                     $scope.greeting = nextGreeting;
                 }else if(Array.isArray(config.greeting)){
                     $scope.greeting = config.greeting[Math.floor(Math.random() * config.greeting.length)];
@@ -194,6 +194,15 @@
                     }
                 });
             };
+
+            addCommand('hi', function() {
+                $scope.$apply(function() {
+                    $scope.isSayHi = true;
+                    $timeout(function() {
+                        $scope.isSayHi = false;
+                    }, 5000);
+                });
+            });
 
             // List commands
             addCommand('list', function() {
@@ -262,13 +271,17 @@
             });
 
             addCommand('schedule_show', function() {
-               $scope.show_schedule = true;
-               console.log("일정이 보여집니다.");
+               $scope.$apply(function() {
+                   $scope.show_schedule = true;
+                   console.log("일정이 보여집니다.");
+               })
             });
 
             addCommand('schedule_hide', function() {
-                $scope.show_schedule = false;
-                console.log("일정이 숨겨집니다.");
+                $scope.$apply(function() {
+                    $scope.show_schedule = false;
+                    console.log("일정이 숨겨집니다.");
+                })
             });
 
             //Search for a video
