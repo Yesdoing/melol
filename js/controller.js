@@ -233,10 +233,6 @@
                 ipcRenderer.send('take-photo');
             });
 
-            addCommand('camera_exit', function() {
-               //
-            });
-
             // Show map
             addCommand('map_show', function() {
                 console.debug("Going on an adventure?");

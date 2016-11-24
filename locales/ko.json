@@ -10,13 +10,13 @@
     "commands": {
         "title" : "사용 가능한 명령",
         "hi": {
-            "text": "인사",
+            "text": "안녕",
             "voice": "안녕",
-            "description":"인사 합니다."
+            "description":" 안녕하세요?"
         },
         "home": {
             "text": "메인 화면",
-            "voice": "(홈으로)(집으로)(메인화면)(메인)(아니야)(들어 가)(아냐)",
+            "voice": "(홈으로)(집으로)(메인 화면)",
             "description": "메인 화면으로 돌아갑니다."
         },
         "subway": {
@@ -41,13 +41,8 @@
         },
         "camera_take": {
             "text": "사진 촬영",
-            "voice": "촬영 (해 줘)(하자)",
+            "voice": "(김치)(촬영해 줘)(촬영 하자)",
             "description": "사진을 촬영합니다."
-        },
-        "camera_exit": {
-            "text": "카메라 종료",
-            "voice": "카메라 종료(해 줘)",
-            "description": "카메라 모드를 종료합니다."
         },
         "album_view" : {
             "text": "앨범 보여줘",
@@ -56,7 +51,7 @@
         },
         "album_prev" : {
             "text": "앨범 이전 페이지",
-            "voice": "이전 (페이지)(앨범)",
+            "voice": "이전 (페이지)",
             "description": "이전 페이지로 넘어갑니다."
         },
         "album_next": {
@@ -131,7 +126,7 @@
         },
         "youtube_stop": {
             "text": "YouTube 동영상 중지",
-            "voice": "동영상 (중지)(멈춰)(정지)",
+            "voice": "(동영상 중지)(동영상 멈춰)(동영상 정지)",
             "description": "YouTube 동영상을 중지합니다."
         },
         "list": {
