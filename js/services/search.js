@@ -19,7 +19,7 @@
                     'key': config.youtube.key
                 }
             });
-        }        
+        };
         return service;
     }
 

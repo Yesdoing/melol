@@ -12,20 +12,20 @@
         "hi": {
             "text": "안녕",
             "voice": "안녕",
-            "description":" 안녕하세요?"
+            "description":"안녕하세요?"
         },
         "home": {
-            "text": "메인 화면",
+            "text": "집으로",
             "voice": "(홈으로)(집으로)(메인 화면)",
             "description": "메인 화면으로 돌아갑니다."
         },
         "subway": {
             "text": "지하철 정보",
             "voice": "지하철 정보 (보자)(보여 줘)",
-            "description": "대구 지하철 정보입니다."
+            "description": "대구 지하철역의 출발 정보입니다."
         },
         "schedule_show" : {
-            "text": "일정 보여 줘",
+            "text": "일정 보자",
             "voice": "일정 (보여 줘)(보자)",
             "description": "일정을 표시합니다."
         },
@@ -40,39 +40,44 @@
             "description": "카메라 모드로 전환합니다."
         },
         "camera_take": {
-            "text": "사진 촬영",
-            "voice": "(김치)(촬영해 줘)(촬영 하자)",
-            "description": "사진을 촬영합니다."
+            "text": "촬영",
+            "voice": "(촬영)(김치)(촬영해 줘)(촬영 하자)",
+            "description": "카메라 모드에서 사진을 촬영합니다."
+        },
+        "camera_exit": {
+            "text": "카메라 종료",
+            "voice": "(카메라 종료)(카메라 꺼져)(카메라 꺼 줘)",
+            "description":"카메라 모드를 종료합니다."
         },
         "album_view" : {
-            "text": "앨범 보여줘",
-            "voice": "(사진) 앨범 보여 줘",
-            "description": "촬영한 사진들을 보여줍니다."
+            "text": "사진 앨범",
+            "voice": "(사진 앨범)(앨범 보여줘)",
+            "description": "MELOL에서 촬영한 사진들을 보여줍니다."
         },
         "album_prev" : {
-            "text": "앨범 이전 페이지",
+            "text": "이전",
             "voice": "이전 (페이지)",
-            "description": "이전 페이지로 넘어갑니다."
+            "description": "앨범의 이전 페이지로 이동합니다."
         },
         "album_next": {
-            "text": "앨범 다음 페이지",
-            "voice": "다음 (페이지)(앨범)",
-            "description": "다음 페이지로 넘어갑니다."
+            "text": "다음",
+            "voice": "다음 (페이지)",
+            "description": "앨범의 다음 페이지로 이동합니다."
         },
         "album_detail": {
             "text": "____번 사진 보여줘",
             "voice": "*photoNum번 사진 (보여 줘)(보자)",
-            "description": "사진을 자세히 볼 수 있습니다."
+            "description": "촬영한 중 하나를 크게 볼 수 있습니다."
         },
         "album_back": {
-            "text": "다시 앨범 목록으로",
+            "text": "뒤로",
             "voice": "뒤로",
-            "description": "앨범 목록으로 돌아갑니다."
+            "description": "사진상세 화면에서 다시 앨범으로 돌아갑니다."
         },
         "music_play": {
             "text": "음악 재생",
             "voice": "음악 (재생해 줘)(재생)(틀어)(틀어 줘)",
-            "description": "음악을 재생합니다."
+            "description": "최근 업로드한 것부터 음악을 재생합니다."
         },
         "music_pause": {
             "text": "음악 중지",
@@ -87,62 +92,62 @@
         "music_prev": {
             "text": "이전 음악",
             "voice": "이전 음악",
-            "description": "이전 음악을 재생합니다."
+            "description": "재생목록의 이전 음악을 재생합니다."
         },
         "music_next": {
             "text": "다음 음악",
             "voice": "다음 음악",
-            "description": "다음 음악을 재생합니다."
+            "description": "재생목록의 다음 음악을 재생합니다."
         },
         "music_exit": {
             "text": "음악 종료",
             "voice": "음악 (꺼 줘)(종료)",
-            "description": "음악 재생을 종료합니다."
+            "description": "음악 플레이어를 종료합니다."
         },
         "map_show": {
             "text": "지도 보여줘",
             "voice": "지도 (보여 줘)(보자)",
-            "description": "현재 도시의 지도를 보여 줍니다."
+            "description": "네트워크에 연결된 위치의 지도를 보여줍니다."
         },
         "map_location": {
             "text": "________ 지도",
             "voice": "*location지도 (보여 줘)(보자)",
-            "description": "주어진 위치의 지도를 보여 줍니다."
+            "description": "원하는 위치의 지도를 보여줍니다."
         },
         "map_zoom_in": {
             "text": "지도 확대",
             "voice": "(지도) 확대",
-            "description": "현재 지도를 확대 합니다."
+            "description": "지도를 확대합니다."
         },
         "map_zoom_out": {
             "text": "지도 축소",
             "voice": "(지도) 축소",
-            "description": "현재 지도를 축소 합니다."
+            "description": "지도를 축소합니다."
         },
         "youtube_play": {
-            "text": "________ YouTube 동영상 재생",
+            "text": "________ 동영상 보여줘",
             "voice": "*keyword 동영상 (보여 줘)(보자)",
-            "description": "YouTube 동영상을 재생합니다."
+            "description": "원하는 YouTube 동영상을 재생합니다."
         },
         "youtube_stop": {
-            "text": "YouTube 동영상 중지",
+            "text": "동영상 중지",
             "voice": "(동영상 중지)(동영상 멈춰)(동영상 정지)",
-            "description": "YouTube 동영상을 중지합니다."
+            "description": "Youtube 동영상을 중지합니다."
         },
         "list": {
             "text": "사용 가능한 질문",
             "voice": "사용 가능한 질문",
-            "description": "사용 가능한 질문입니다."
+            "description": "사용 가능한 질문의 목록을 보여줍니다."
         },
         "sleep": {
-            "text": "잠 자러가",
+            "text": "자러가",
             "voice": "(잠) 자러가",
-            "description": "'Sleep' 모드로 진입합니다."
+            "description": "'Sleep'모드로 전환합니다."
         },
         "wake_up": {
             "text": "일어나",
             "voice": "일어나",
-            "description": "'Wake Up' 모드로 진입합니다."
+            "description": "'Wake Up'모드로 전환합니다."
         },
         "time_show": {
             "text": "지금 몇 시",

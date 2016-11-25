@@ -128,7 +128,8 @@
           <div class="camera animate-grow" ng-show="focus == 'camera'">
               <div ng-show="stream">
                   <p class="camera-help-text">촬영 대기 중</p>
-                  <img src="http://localhost:8080/?action=stream" style="border: solid 2px red;"/>
+                  <!--<img id="camera-preview" src="http://localhost:8080/?action=stream" style="border: solid 2px red;"/>-->
+                  <img id="camera-preview" src='' style="border: solid 2px red;"/>
               </div>
               <div ng-hide="stream">
                   <p class="camera-help-text">촬영된 사진</p>

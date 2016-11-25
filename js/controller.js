@@ -223,14 +223,20 @@
             // Go back to default view
             addCommand('wake_up', defaultView);
 
+            var camera_preview = document.getElementById('camera-preview');
+
             addCommand('camera', function() {
-                //
+                camera_preview.src='http://localhost:8080/?action=stream';
                 $scope.focus = 'camera';
             });
 
             addCommand('camera_take', function() {
-                //
                 ipcRenderer.send('take-photo');
+            });
+
+            addCommand('camera_exit', function() {
+                $scope.focus = 'default';
+                camera_preview.src='';
             });
 
             // Show map
