@@ -204,6 +204,15 @@
                 });
             });
 
+            addCommand('hi2', function() {
+                $scope.$apply(function() {
+                    $scope.isSayHi2 = true;
+                    $timeout(function() {
+                        $scope.isSayHi2 = false;
+                    }, 5000);
+                });
+            });
+
             // List commands
             addCommand('list', function() {
                 console.debug("Here is a list of commands...");
